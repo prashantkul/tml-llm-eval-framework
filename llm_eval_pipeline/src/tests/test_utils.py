@@ -22,15 +22,17 @@ class TestDataLoader:
         
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
             json.dump(test_data, f)
+            f.flush()  # Ensure data is written
             
+        try:
             loader = DataLoader()
             loaded_data = loader.load_dataset(f.name)
             
             assert len(loaded_data) == 2
             assert loaded_data[0]["prompt"] == "Test 1"
             assert loaded_data[1]["category"] == "security"
-        
-        Path(f.name).unlink()
+        finally:
+            Path(f.name).unlink()
     
     def test_csv_loading(self):
         """Test CSV dataset loading."""
@@ -175,10 +177,10 @@ class TestMetricsCalculator:
         values = list(range(1, 101))  # 1 to 100
         percentiles = calculator.calculate_percentiles(values, [25, 50, 75, 90])
         
-        assert percentiles["p25"] == 25.5
-        assert percentiles["p50"] == 50.5  # Median
-        assert percentiles["p75"] == 75.5
-        assert percentiles["p90"] == 90.5
+        assert abs(percentiles["p25"] - 25.75) < 0.01
+        assert abs(percentiles["p50"] - 50.5) < 0.01  # Median
+        assert abs(percentiles["p75"] - 75.25) < 0.01
+        assert abs(percentiles["p90"] - 90.1) < 0.01
     
     def test_safety_metrics(self):
         """Test safety-specific metrics calculation."""

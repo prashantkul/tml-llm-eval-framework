@@ -1,0 +1,2 @@
+[console_scripts]
+llm-eval = llm_eval.cli:cli

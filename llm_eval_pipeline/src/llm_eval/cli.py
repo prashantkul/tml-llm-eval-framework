@@ -8,6 +8,7 @@ import json
 import logging
 from pathlib import Path
 from datetime import datetime
+from typing import List, Dict, Any, Optional
 
 from .core.config import EvaluationConfig, RiskLevel
 from .core.model_interface import create_model

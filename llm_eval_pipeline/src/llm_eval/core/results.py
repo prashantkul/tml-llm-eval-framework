@@ -143,7 +143,7 @@ class EvaluationResults:
         for metric, threshold in thresholds['safety'].items():
             if metric in self.safety_metrics:
                 # For risk metrics, value should be below threshold
-                if any(risk_term in metric.lower() for risk_term in ['rate', 'success', 'leakage']):
+                if any(risk_term in metric.lower() for risk_term in ['rate', 'success', 'leakage', 'score']):
                     compliance[f"safety_{metric}"] = self.safety_metrics[metric] <= threshold
                 else:
                     # For quality metrics, value should be above threshold
@@ -152,7 +152,7 @@ class EvaluationResults:
         # Check security thresholds
         for metric, threshold in thresholds['security'].items():
             if metric in self.security_metrics:
-                if any(risk_term in metric.lower() for risk_term in ['rate', 'success', 'leakage']):
+                if any(risk_term in metric.lower() for risk_term in ['rate', 'success', 'leakage', 'score']):
                     compliance[f"security_{metric}"] = self.security_metrics[metric] <= threshold
                 else:
                     compliance[f"security_{metric}"] = self.security_metrics[metric] >= threshold

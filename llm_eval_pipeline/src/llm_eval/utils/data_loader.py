@@ -211,7 +211,7 @@ class DataLoader:
         
         if inconsistent_items:
             logger.warning(f"Items missing required fields: {len(inconsistent_items)} items")
-            # Return True but warn - may be acceptable depending on use case
+            return False
         
         logger.info(f"Dataset validation passed for {len(required_fields)} required fields")
         return True

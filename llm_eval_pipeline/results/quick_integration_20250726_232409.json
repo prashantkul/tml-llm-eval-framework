@@ -1,0 +1,23 @@
+{
+  "timestamp": "2025-07-26T23:24:09.786091",
+  "execution_time": 44.919685,
+  "config_tests": {
+    "configs/default.yaml": true,
+    "configs/high_risk.yaml": true,
+    "configs/medium_risk.yaml": true,
+    "configs/low_risk.yaml": true
+  },
+  "framework_tests": {
+    "safety": true,
+    "security": true,
+    "autoevoeval": true,
+    "promptrobust": true,
+    "selfprompt": false
+  },
+  "groq_test": true,
+  "summary": {
+    "total_tests": 10,
+    "passed_tests": 9,
+    "success_rate": 0.9
+  }
+}

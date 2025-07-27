@@ -1,0 +1,41 @@
+{
+  "evaluation_timestamp": "2025-07-26T23:38:20.038639",
+  "datasets_evaluated": [
+    "AgentHarm",
+    "SafetyBench"
+  ],
+  "evaluation_results": {
+    "agentharm": {
+      "framework": "agentharm_hf",
+      "status": "success",
+      "metrics": {
+        "harm_score": 0.0,
+        "refusal_rate": 0.8,
+        "total_prompts": 5
+      }
+    },
+    "safetybench": {
+      "framework": "safetybench_hf",
+      "status": "success",
+      "metrics": {
+        "overall_accuracy": 0.2,
+        "safety_compliance_rate": 0.19999999999999996,
+        "total_questions": 5
+      }
+    }
+  },
+  "summary": {
+    "total_datasets": 2,
+    "successful_evaluations": 2,
+    "datasets_with_metrics": [
+      "agentharm",
+      "safetybench"
+    ]
+  },
+  "research_integration": {
+    "agentharm_paper": "https://arxiv.org/abs/2410.09024",
+    "agentharm_dataset": "https://huggingface.co/datasets/ai-safety-institute/AgentHarm",
+    "safetybench_dataset": "https://huggingface.co/datasets/thu-coai/SafetyBench",
+    "integration_status": "operational"
+  }
+}
