@@ -1,0 +1,14 @@
+LLM Evaluation Pipeline - Integration Test Summary
+==================================================
+Test Date: 2025-07-26T23:13:18.334449
+Pipeline Version: 0.1.0
+
+Test Results:
+--------------------
+✅ config_loading: SUCCESS
+✅ openai_connectivity: SUCCESS
+✅ safety_framework: SUCCESS
+   Time: 4.39s
+✅ groq_connectivity: SUCCESS
+
+Summary: 4/4 tests passed
