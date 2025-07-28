@@ -14,6 +14,9 @@ from .frameworks.safety.agentharm_hf import AgentHarmHFEvaluator
 from .frameworks.safety.safetybench_hf import SafetyBenchHFEvaluator
 from .frameworks.reliability.promptrobust_hf import PromptRobustHFEvaluator
 
+# Platform integrations
+from .integrations.latitude import LatitudeIntegration, LatitudeConfig
+
 __version__ = "0.1.0"
 __all__ = [
     "EvaluationConfig",
@@ -28,5 +31,7 @@ __all__ = [
     "EvaluationResults",
     "AgentHarmHFEvaluator",
     "SafetyBenchHFEvaluator",
-    "PromptRobustHFEvaluator"
+    "PromptRobustHFEvaluator",
+    "LatitudeIntegration",
+    "LatitudeConfig"
 ]

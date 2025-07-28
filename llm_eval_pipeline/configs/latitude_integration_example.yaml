@@ -1,0 +1,107 @@
+# Latitude.so Integration Configuration Example
+# 
+# This configuration shows how to set up integration with Latitude's
+# prompt engineering platform for bidirectional evaluation workflow
+
+latitude:
+  # Required: Your Latitude API key
+  # Get this from your Latitude.so dashboard
+  api_key: "${LATITUDE_API_KEY}"
+  
+  # Optional: Project ID for scoping operations
+  project_id: null  # Set to your project ID number if needed
+  
+  # Optional: Version UUID for specific prompt versions
+  version_uuid: null  # Set to specific version UUID if needed
+  
+  # API configuration
+  base_url: "https://gateway.latitude.so"
+  timeout: 30
+  
+  # Integration settings
+  integration:
+    # Enable automatic result pushing after evaluation
+    auto_push_results: true
+    
+    # Enable dataset synchronization
+    auto_sync_datasets: false
+    
+    # Batch size for pushing multiple evaluations
+    batch_size: 50
+    
+    # Retry configuration
+    retry_attempts: 3
+    retry_delay: 1.0
+    
+    # Result filtering - which metrics to push to Latitude
+    push_metrics:
+      safety: true
+      security: true  
+      reliability: true
+      
+    # Metric type filtering
+    metric_types:
+      - "float"
+      - "int" 
+      - "bool"
+      # Skip complex objects and strings
+    
+    # Custom evaluation mappings
+    evaluation_mappings:
+      # Map our framework results to Latitude evaluation UUIDs
+      safety:
+        agentharm_hf:
+          harm_score: "safety-harm-detection"
+          refusal_rate: "safety-refusal-rate"
+        safetybench_hf:
+          overall_accuracy: "safety-qa-accuracy"
+          safety_compliance_rate: "safety-compliance"
+      
+      security:
+        houyi:
+          attack_success_rate: "security-attack-resistance"
+        cia_attacks:
+          vulnerability_score: "security-vulnerability"
+      
+      reliability:
+        promptrobust_hf:
+          robustness_score: "reliability-robustness"
+          consistency_rate: "reliability-consistency"
+
+# Framework configuration when using with Latitude
+evaluation:
+  # Use smaller sample sizes for faster Latitude integration
+  frameworks:
+    safety:
+      agentharm_hf:
+        sample_size: 5
+      safetybench_hf:
+        sample_size: 5
+    
+    reliability:
+      promptrobust_hf:
+        sample_size: 5
+  
+  # Model configuration
+  models:
+    - provider: "openai"
+      model: "gpt-3.5-turbo"
+      api_key: "${OPENAI_API_KEY}"
+    
+    # Add more models as needed
+    
+# Logging configuration for integration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  # Specific loggers
+  loggers:
+    llm_eval.integrations.latitude: "DEBUG"
+    aiohttp: "WARNING"  # Reduce HTTP client noise
+
+# Example environment variables needed:
+# LATITUDE_API_KEY=lat_your_api_key_here
+# OPENAI_API_KEY=sk-your_openai_key_here
+# LATITUDE_PROJECT_ID=123  # Optional
+# LATITUDE_VERSION_UUID=uuid-string  # Optional

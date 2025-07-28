@@ -11,10 +11,14 @@ openai>=1.0.0
 anthropic>=0.15.0
 groq>=0.4.0
 
+# Platform integrations
+latitude-sdk>=3.0.0
+
 # ML/AI frameworks
 transformers>=4.30.0
 torch>=2.0.0
 accelerate>=0.20.0
+datasets>=2.14.0
 
 # Evaluation frameworks
 inspect-ai>=0.3.0
