@@ -9,9 +9,13 @@ import asyncio
 import os
 import sys
 import json
+import logging
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any
+
+# Enable debug logging to see parameter values
+logging.basicConfig(level=logging.DEBUG)
 
 # Add the src directory to Python path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
@@ -229,10 +233,15 @@ async def test_comprehensive_workflow(config: LatitudeConfig):
             timestamp=datetime.now(), 
             config=config
         )
-        evaluation_results.safety_results[safety_result.framework_name] = safety_result
+        evaluation_results.safety_results.append(safety_result)
         
         # Test push to Latitude  
-        latitude_config = LatitudeConfig(api_key=os.getenv('LATITUDE_API_KEY'))
+        project_id_str = os.getenv('LATITUDE_PROJECT_ID')
+        project_id = int(project_id_str) if project_id_str else None
+        latitude_config = LatitudeConfig(
+            api_key=os.getenv('LATITUDE_API_KEY'),
+            project_id=project_id
+        )
         integration = LatitudeIntegration(latitude_config)
         
         push_result = await integration.push_framework_results(
@@ -336,9 +345,9 @@ def create_mock_evaluation_results():
         timestamp=datetime.now(),
         config=config
     )
-    results.safety_results["mock_agentharm"] = safety_result
-    results.security_results["mock_security"] = security_result
-    results.reliability_results["mock_promptrobust"] = reliability_result
+    results.safety_results.append(safety_result)
+    results.security_results.append(security_result)
+    results.reliability_results.append(reliability_result)
     
     return results
 
