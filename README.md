@@ -2,6 +2,29 @@
 
 An LLM evaluation pipeline that integrates multiple safety, security, and reliability frameworks. This modular, extensible system can evaluate any LLM across comprehensive metrics with risk-adjusted thresholds.
 
+## Architecture
+
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   LLM Models    │    │   Orchestrator   │    │   Frameworks    │
+│                 │    │                  │    │                 │
+│ • OpenAI        │◄──►│ • Config Mgmt    │◄──►│ • Safety        │
+│ • Anthropic     │    │ • Rate Limiting  │    │ • Security      │
+│ • Groq          │    │ • Async Exec     │    │ • Reliability   │
+│ • Local         │    │ • Error Handling │    │ • Latitude Eval │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+                                │
+                                ▼
+                       ┌─────────────────┐
+                       │     Results     │
+                       │                 │
+                       │ • JSON Reports  │
+                       │ • Risk Analysis │
+                       │ • Visualizations│
+                       │ • Integrations  │
+                       └─────────────────┘
+```
+
 ## Features
 
 - **Multi-Provider Support**: OpenAI, Anthropic, Groq, and local models
