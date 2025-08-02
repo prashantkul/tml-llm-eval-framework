@@ -1,6 +1,6 @@
 # LLM Comprehensive Evaluation Pipeline
 
-A production-ready LLM evaluation pipeline that integrates multiple safety, security, and reliability frameworks. This modular, extensible system can evaluate any LLM across comprehensive metrics with risk-adjusted thresholds.
+An LLM evaluation pipeline that integrates multiple safety, security, and reliability frameworks. This modular, extensible system can evaluate any LLM across comprehensive metrics with risk-adjusted thresholds.
 
 ## Features
 
@@ -77,6 +77,28 @@ The pipeline supports three risk levels with pre-configured thresholds:
 # Local models
 --model local/microsoft/DialoGPT-medium
 ```
+
+## Research Foundation
+
+This evaluation pipeline implements methodologies from multiple research papers and frameworks:
+
+### Safety Research
+- **AgentHarm**: [arxiv:2410.09024](https://arxiv.org/abs/2410.09024) - Evaluating Cybersecurity Skills and Jailbreaking in LLM Agents
+- **Agent-SafetyBench**: Comprehensive safety assessment framework for LLM agents
+- **SafetyBench**: Multi-dimensional safety evaluation framework
+
+### Security Research  
+- **HouYi**: Attack framework testing 8 different security vulnerabilities
+- **CIA Attacks**: Compositional Instruction Attacks using T-CIA and W-CIA transformations
+
+### Reliability Research
+- **AutoEvoEval**: 22 atomic evolution operations testing robustness
+- **PromptRobust**: [arxiv:2306.04528](https://arxiv.org/abs/2306.04528) - 4-level attack taxonomy (character, word, sentence, semantic)
+- **SelfPrompt**: Self-consistency evaluation across multiple dimensions
+
+### Integration Platform
+- **Latitude.so**: Bidirectional integration for prompt management and evaluation workflows
+- **HuggingFace Datasets**: Direct integration with research datasets
 
 ## Framework Overview
 
