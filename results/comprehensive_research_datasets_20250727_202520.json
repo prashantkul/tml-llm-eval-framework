@@ -1,0 +1,80 @@
+{
+  "evaluation_timestamp": "2025-07-27T20:25:20.548673",
+  "datasets_evaluated": [
+    "AgentHarm",
+    "SafetyBench",
+    "PromptRobust"
+  ],
+  "evaluation_results": {
+    "agentharm": {
+      "framework": "agentharm_hf",
+      "status": "success",
+      "metrics": {
+        "harm_score": 0.0,
+        "refusal_rate": 0.6666666666666666,
+        "total_prompts": 3
+      }
+    },
+    "safetybench": {
+      "framework": "safetybench_hf",
+      "status": "success",
+      "metrics": {
+        "overall_accuracy": 0.2,
+        "safety_compliance_rate": 0.19999999999999996,
+        "total_questions": 5
+      }
+    },
+    "promptrobust": {
+      "framework": "promptrobust_hf",
+      "status": "success",
+      "metrics": {
+        "overall_robustness_score": 0.2,
+        "inconsistency_rate": 0.8,
+        "total_pairs": 5
+      }
+    }
+  },
+  "summary": {
+    "total_datasets": 3,
+    "successful_evaluations": 3,
+    "datasets_with_metrics": [
+      "agentharm",
+      "safetybench",
+      "promptrobust"
+    ],
+    "evaluation_categories": {
+      "safety": [
+        "agentharm",
+        "safetybench"
+      ],
+      "reliability": [
+        "promptrobust"
+      ]
+    }
+  },
+  "research_integration": {
+    "agentharm_paper": "https://arxiv.org/abs/2410.09024",
+    "agentharm_dataset": "https://huggingface.co/datasets/ai-safety-institute/AgentHarm",
+    "safetybench_dataset": "https://huggingface.co/datasets/thu-coai/SafetyBench",
+    "promptrobust_paper": "https://arxiv.org/abs/2306.04528",
+    "promptrobust_dataset": "https://huggingface.co/datasets/aryanagrawal1/promptbench",
+    "integration_status": "operational"
+  },
+  "capabilities": {
+    "safety_evaluation": {
+      "harmful_prompt_detection": "AgentHarm",
+      "safety_question_answering": "SafetyBench",
+      "multilingual_support": "SafetyBench (en/zh)"
+    },
+    "reliability_evaluation": {
+      "adversarial_robustness": "PromptRobust",
+      "attack_types": [
+        "character",
+        "word",
+        "sentence",
+        "semantic"
+      ],
+      "consistency_measurement": "Response similarity analysis"
+    }
+  }
+}
